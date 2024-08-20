@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GALA</title>
+    <link rel="icon" href="logo.png" sizes="16x16" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos para hacer la página con una imagen de fondo */
+        body {
+            background-image: url('Gala.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center center;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Alinea los elementos hijos al final del contenedor */
+            align-items: center; /* Centra horizontalmente */
+        }
+
+        /* Estilos para el contenido */
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total del contenedor */
+            position: fixed; /* Fija el contenedor en la parte inferior */
+            bottom: 0; /* Posiciona el contenedor en la parte inferior */
+            background-color: transparent; /* Fondo transparente */
+        }
+
+        /* Estilos para los botones */
+        .btn {
+            margin: 10px;
+            padding: 8px 15px; /* Tamaño ajustado de los botones */
+            font-size: 1em; /* Tamaño de fuente más pequeño */
+            color: #ffffff;
+            background-color: #f76c6c;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn:hover {
+            background-color: #f53b3b;
+        }
+
+        .btn i {
+            margin-right: 5px; /* Ajuste del margen del icono */
+        }
+
+        /* Estilos para el menú desplegable */
+        .dropdown {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            bottom: 100%; /* Despliega hacia arriba */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f76c6c;
+            min-width: 120px; /* Ancho reducido */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 50px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 8px 10px; /* Tamaño ajustado del menú desplegable */
+            text-decoration: none;
+            display: block;
+            border-radius: 50px; /* Mantiene la forma redondeada */
+            text-align: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f53b3b;
+        }
+
+        .show {
+            display: block;
+        }
+
+        /* Asegura que los botones se mantengan visibles en la parte inferior en dispositivos móviles */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .dropdown-content {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .btn {
+                width: auto; /* Ajusta el ancho de los botones para dispositivos móviles */
+                margin: 5px;
+                padding: 5px 10px; /* Tamaño reducido para dispositivos móviles */
+                font-size: 0.9em; /* Fuente más pequeña para dispositivos móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dropdown">
+            <button class="btn" onclick="toggleDropdown()"><i class="fas fa-paw"></i>Llamar a casa</button>
+            <div class="dropdown-content" id="dropdown-content">
+                <a href="tel:+5493584023966">Llamar a Elias</a>
+                <a href="tel:+5493584301020">Llamar a Pabla</a>
+            </div>
+        </div>
+        <a href="https://wa.me/5493584301020" class="btn"><i class="fas fa-paw"></i>WhatsApp</a>
+    </div>
+    <script>
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdown-content");
+            dropdownContent.classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.btn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
